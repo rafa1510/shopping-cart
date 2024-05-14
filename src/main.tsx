@@ -1,10 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './components/App'
-import './styles/index.css'
+import GlobalStyle from './components/GlobalStyle'
+import StyledNavbar from './components/StyledNavbar'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <App></App>
+    <GlobalStyle />
+    <StyledNavbar></StyledNavbar>
   </React.StrictMode>
 )
