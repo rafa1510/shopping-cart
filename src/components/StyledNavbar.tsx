@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import cartUrl from '../assets/img/cart.svg'
+import { Link } from 'react-router-dom'
 
 interface NavbarProps {
   className?: string
@@ -15,10 +16,12 @@ const CartContainer = styled.div`
 const Navbar = ({ className, cartCount }: NavbarProps) => {
   return (
     <div className={className}>
-      <h1>Fake Shop!</h1>
+      <Link to="/">Fake Shop!</Link>
       <CartContainer>
         <h1>{cartCount}</h1>
-        <img src={cartUrl} width="32px" alt="Shopping Cart"></img>
+        <Link to="cart">
+          <img src={cartUrl} width="32px" alt="Shopping Cart"></img>
+        </Link>
       </CartContainer>
     </div>
   )

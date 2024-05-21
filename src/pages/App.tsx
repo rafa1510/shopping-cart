@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 import StyledHome from './Home'
 import StyledCart from './Cart'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import StyledNavbar from '../components/StyledNavbar'
 import { Product } from '../components/StyledItemContainer'
 
 interface AppProps {
@@ -31,17 +30,16 @@ const App = ({ className }: AppProps) => {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <StyledHome handleCart={addToCart} />,
+      element: <StyledHome handleCart={addToCart} cart={cart} />,
     },
     {
       path: 'cart',
-      element: <StyledCart products={cart} handleCart={removeFromCart} />,
+      element: <StyledCart products={cart} handleCart={removeFromCart} cart={cart} />,
     },
   ])
 
   return (
     <div>
-      <StyledNavbar cartCount={cart.length} />
       <RouterProvider router={router} />
     </div>
   )

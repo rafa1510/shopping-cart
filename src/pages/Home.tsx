@@ -2,14 +2,16 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import StyledItemContainer from '../components/StyledItemContainer'
+import StyledNavbar from '../components/StyledNavbar'
 import { Product } from '../components/StyledItemContainer'
 
 interface HomeProps {
   className?: string
   handleCart: Function
+  cart: Array<Product>
 }
 
-const Home = ({ className, handleCart }: HomeProps) => {
+const Home = ({ className, handleCart, cart }: HomeProps) => {
   const [products, setProducts] = useState(Array<Product>)
   const [error, setError] = useState(null)
 
@@ -34,6 +36,7 @@ const Home = ({ className, handleCart }: HomeProps) => {
 
   return (
     <div className={className}>
+      <StyledNavbar cartCount={cart.length} />
       <StyledItemContainer products={products} handleCart={handleCart} buttonText={'Add to cart'} />
     </div>
   )
