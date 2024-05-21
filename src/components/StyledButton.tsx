@@ -7,11 +7,12 @@ interface ButtonProps {
   children?: string
   handleCart: Function
   product: Product
+  quantity: number
 }
 
-const Button = ({ className, children, handleCart, product }: ButtonProps) => {
+const Button = ({ className, children, handleCart, product, quantity }: ButtonProps) => {
   return (
-    <button onClick={() => handleCart(product)} className={className}>
+    <button onClick={() => handleCart(product, quantity)} className={className}>
       {children}
     </button>
   )

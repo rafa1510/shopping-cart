@@ -36,7 +36,7 @@ const Home = ({ className, handleCart, cart }: HomeProps) => {
 
   return (
     <div className={className}>
-      <StyledNavbar cartCount={cart.length} />
+      <StyledNavbar cartCount={cart.reduce((total, product) => total + product.quantity, 0)} />
       <StyledItemContainer products={products} handleCart={handleCart} buttonText={'Add to cart'} />
     </div>
   )

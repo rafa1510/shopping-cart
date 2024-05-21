@@ -6,7 +6,7 @@ interface ItemContainerProps {
   className?: string
   products: Array<Product>
   handleCart: Function
-  buttonText: "Add to cart" | "Remove from cart"
+  buttonText: 'Add to cart' | 'Remove from cart'
 }
 
 export interface Product {
@@ -17,6 +17,7 @@ export interface Product {
   category: string
   image: string
   rating: ProductRating
+  quantity: number
 }
 
 interface ProductRating {
@@ -25,7 +26,9 @@ interface ProductRating {
 }
 
 const ItemContainer = ({ className, products, handleCart, buttonText }: ItemContainerProps) => {
-  const productList = products.map((product) => <StyledItemCard key={product.id} product={product} handleCart={handleCart} buttonText={buttonText}/>)
+  const productList = products.map((product) => (
+    <StyledItemCard key={product.id} product={product} handleCart={handleCart} buttonText={buttonText} />
+  ))
 
   return <div className={className}>{productList}</div>
 }

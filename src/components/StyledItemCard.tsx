@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react'
 import styled from 'styled-components'
 import StyledButton from './StyledButton'
 import { Product } from './StyledItemContainer'
@@ -60,6 +61,10 @@ const QuantitySelect = styled.select`
 `
 
 const ItemCard = ({ className, product, handleCart, buttonText }: ItemCardProps) => {
+  const [itemQuantity, setItemQuantity] = useState(1)
+
+  const handleChange = (value: string) => setItemQuantity(parseInt(value))
+
   return (
     <div className={className}>
       <ImageContainer>
@@ -71,7 +76,12 @@ const ItemCard = ({ className, product, handleCart, buttonText }: ItemCardProps)
       </DescriptionContainer>
       <QuantityContainer>
         <QuantityLabel htmlFor="quantity-select">Quantity:</QuantityLabel>
-        <QuantitySelect name="quantity-select" id="quantity-select">
+        <QuantitySelect
+          name="quantity-select"
+          id="quantity-select"
+          defaultValue={product.quantity ? product.quantity : itemQuantity}
+          onChange={(e) => handleChange(e.target.value)}
+        >
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -79,7 +89,7 @@ const ItemCard = ({ className, product, handleCart, buttonText }: ItemCardProps)
           <option value="5">5</option>
         </QuantitySelect>
       </QuantityContainer>
-      <StyledButton handleCart={handleCart} product={product}>
+      <StyledButton handleCart={handleCart} product={product} quantity={itemQuantity}>
         {buttonText}
       </StyledButton>
     </div>

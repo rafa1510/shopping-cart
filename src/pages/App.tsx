@@ -15,8 +15,9 @@ const App = ({ className }: AppProps) => {
     return savedCart ? JSON.parse(savedCart) : []
   })
 
-  const addToCart = (product: Product) => {
-    setCart((prevCart) => [...prevCart, product])
+  const addToCart = (product: Product, quantity: number) => {
+    const productWithQuantity = { ...product, quantity: quantity }
+    setCart((prevCart) => [...prevCart, productWithQuantity])
   }
 
   const removeFromCart = (product: Product) => {
@@ -34,7 +35,7 @@ const App = ({ className }: AppProps) => {
     },
     {
       path: 'cart',
-      element: <StyledCart products={cart} handleCart={removeFromCart} cart={cart} />,
+      element: <StyledCart handleCart={removeFromCart} cart={cart} />,
     },
   ])
 

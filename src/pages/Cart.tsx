@@ -15,7 +15,7 @@ const Cart = ({ className, handleCart, cart }: CartProps) => {
 
   return (
     <div className={className}>
-      <StyledNavbar cartCount={cart.length} />
+      <StyledNavbar cartCount={cart.reduce((total, product) => total + product.quantity, 0)} />
       <StyledItemContainer products={cart} handleCart={handleCart} buttonText={'Remove from cart'} />
       <h1>Total Price: {totalPrice} </h1>
       <button> Checkout </button>
