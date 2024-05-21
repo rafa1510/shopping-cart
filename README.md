@@ -1,3 +1,3 @@
-# template-react-repo
+# shopping-cart
 
-React repository setup with React, React Router, ESLint, Prettier, Tailwind, Typescript, Vitest & React Testing Library
+Basic shopping cart, with add to cart and remove to cart functionality
