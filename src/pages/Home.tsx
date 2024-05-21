@@ -1,41 +1,16 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import StyledNavbar from '../components/StyledNavbar'
-import StyledItemCard from '../components/StyledItemCard'
+import StyledItemContainer from '../components/StyledItemContainer'
+import { Product } from '../components/StyledItemContainer'
 
 interface HomeProps {
   className?: string
 }
 
-interface Product {
-  id: number
-  title: string
-  price: number
-  description: string
-  category: string
-  image: string
-  rating: ProductRating
-}
-
-interface ProductRating {
-  rate: number
-  count: number
-}
-
-const ItemContainer = styled.div`
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-`
-
 const Home = ({ className }: HomeProps) => {
   const [products, setProducts] = useState(Array<Product>)
   const [error, setError] = useState(null)
-
-  const productList = products.map((product) => (
-    <StyledItemCard key={product.id} itemImage={product.image} itemName={product.title} itemPrice={product.price} />
-  ))
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -54,12 +29,12 @@ const Home = ({ className }: HomeProps) => {
     }
 
     fetchProducts()
-  })
+  }, [])
 
   return (
-    <>
-      <ItemContainer>{productList}</ItemContainer>
-    </>
+    <div className={className}>
+      <StyledItemContainer products={products} />
+    </div>
   )
 }
 
