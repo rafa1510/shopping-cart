@@ -6,9 +6,10 @@ import { Product } from '../components/StyledItemContainer'
 
 interface HomeProps {
   className?: string
+  handleCart: Function
 }
 
-const Home = ({ className }: HomeProps) => {
+const Home = ({ className, handleCart }: HomeProps) => {
   const [products, setProducts] = useState(Array<Product>)
   const [error, setError] = useState(null)
 
@@ -33,7 +34,7 @@ const Home = ({ className }: HomeProps) => {
 
   return (
     <div className={className}>
-      <StyledItemContainer products={products} />
+      <StyledItemContainer products={products} handleCart={handleCart} buttonText={'Add to cart'} />
     </div>
   )
 }

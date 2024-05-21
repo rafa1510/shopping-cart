@@ -1,12 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import StyledButton from './StyledButton'
+import { Product } from './StyledItemContainer'
 
 interface ItemCardProps {
   className?: string
-  itemImage: string
-  itemName: string
-  itemPrice: number
+  product: Product
+  handleCart: Function
+  buttonText: string
 }
 
 const ImageContainer = styled.div`
@@ -58,15 +59,15 @@ const QuantitySelect = styled.select`
   font-size: 1rem;
 `
 
-const ItemCard = ({ className, itemImage, itemName, itemPrice }: ItemCardProps) => {
+const ItemCard = ({ className, product, handleCart, buttonText }: ItemCardProps) => {
   return (
     <div className={className}>
       <ImageContainer>
-        <Image width="250" height="250" src={itemImage} alt={itemName} />
+        <Image width="250" height="250" src={product.image} alt={product.title} />
       </ImageContainer>
       <DescriptionContainer>
-        <h1>{itemName}</h1>
-        <h1>${itemPrice}</h1>
+        <h1>{product.title}</h1>
+        <h1>${product.price}</h1>
       </DescriptionContainer>
       <QuantityContainer>
         <QuantityLabel htmlFor="quantity-select">Quantity:</QuantityLabel>
@@ -78,7 +79,9 @@ const ItemCard = ({ className, itemImage, itemName, itemPrice }: ItemCardProps) 
           <option value="5">5</option>
         </QuantitySelect>
       </QuantityContainer>
-      <StyledButton>Add to cart</StyledButton>
+      <StyledButton handleCart={handleCart} product={product}>
+        {buttonText}
+      </StyledButton>
     </div>
   )
 }

@@ -4,13 +4,22 @@ import cartUrl from '../assets/img/cart.svg'
 
 interface NavbarProps {
   className?: string
+  cartCount: number
 }
 
-const Navbar = ({ className }: NavbarProps) => {
+const CartContainer = styled.div`
+  display: flex;
+  gap: 1rem;
+`
+
+const Navbar = ({ className, cartCount }: NavbarProps) => {
   return (
     <div className={className}>
       <h1>Fake Shop!</h1>
-      <img src={cartUrl} width="32px" alt="Shopping Cart"></img>
+      <CartContainer>
+        <h1>{cartCount}</h1>
+        <img src={cartUrl} width="32px" alt="Shopping Cart"></img>
+      </CartContainer>
     </div>
   )
 }

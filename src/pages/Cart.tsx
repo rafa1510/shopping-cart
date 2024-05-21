@@ -7,16 +7,17 @@ import { Product } from '../components/StyledItemContainer'
 interface CartProps {
   className?: string
   products: Array<Product>
+  handleCart: Function
 }
 
-const Cart = ({ className, products }: CartProps) => {
+const Cart = ({ className, handleCart, products }: CartProps) => {
   const totalPrice = products?.reduce((total, product) => total + product.price, 0)
 
   return (
     <div className={className}>
-      <StyledItemContainer products={products} />
+      <StyledItemContainer products={products} handleCart={handleCart} buttonText={'Remove from cart'} />
       <h1>Total Price: {totalPrice} </h1>
-      <StyledButton>Checkout</StyledButton>
+      <button> Checkout </button>
     </div>
   )
 }

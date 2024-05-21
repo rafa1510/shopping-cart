@@ -1,13 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Product } from './StyledItemContainer'
 
 interface ButtonProps {
   className?: string
   children?: string
+  handleCart: Function
+  product: Product
 }
 
-const Button = ({ className, children }: ButtonProps) => {
-  return <button className={className}>{children}</button>
+const Button = ({ className, children, handleCart, product }: ButtonProps) => {
+  return (
+    <button onClick={() => handleCart(product)} className={className}>
+      {children}
+    </button>
+  )
 }
 
 const StyledButton = styled(Button)`

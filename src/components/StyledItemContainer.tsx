@@ -5,6 +5,8 @@ import StyledItemCard from '../components/StyledItemCard'
 interface ItemContainerProps {
   className?: string
   products: Array<Product>
+  handleCart: Function
+  buttonText: "Add to cart" | "Remove from cart"
 }
 
 export interface Product {
@@ -22,10 +24,8 @@ interface ProductRating {
   count: number
 }
 
-const ItemContainer = ({ className, products }: ItemContainerProps) => {
-  const productList = products.map((product) => (
-    <StyledItemCard key={product.id} itemImage={product.image} itemName={product.title} itemPrice={product.price} />
-  ))
+const ItemContainer = ({ className, products, handleCart, buttonText }: ItemContainerProps) => {
+  const productList = products.map((product) => <StyledItemCard key={product.id} product={product} handleCart={handleCart} buttonText={buttonText}/>)
 
   return <div className={className}>{productList}</div>
 }
