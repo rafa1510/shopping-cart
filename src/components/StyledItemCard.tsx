@@ -106,6 +106,3 @@ const StyledItemCard = styled(ItemCard)`
 `
 
 export default StyledItemCard
-
-// TODO: Add outline and stuff to button or select when pressed/hovered, and check out accessibility
-// TODO: Possibly change select to a component
